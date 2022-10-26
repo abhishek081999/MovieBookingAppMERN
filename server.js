@@ -19,15 +19,24 @@ db.mongoose
 
 const app=express();
 
+require("./app/routes/movie.routes")(app);
+require("./app/routes/artist.routes")(app);
+require("./app/routes/genre.routes")(app);
+
 const port=9000;
 
+    app.get("/", (req, res) => {
+      res.json({ message: "Welcome to Upgrad Movie booking application development." });
+    });
 
     app.get("/movies",(req,res)=>{
       res.status(200).send("All Movies Data in JSON format from Mongo DB");
     })
+
     app.get("/genres",(req,res)=>{
         res.status(200).send("All Genres Data in JSON format from Mongo DB");
     })
+    
     app.get("/artists",(req,res)=>{
         res.status(200).send("All Artists Data in JSON format from Mongo DB");
     })
